@@ -68,7 +68,7 @@ def feed_json():
 @app.get("/")
 def index():
     t = now()
-    tpl = """
+    tpl = '''
 <!doctype html>
 <html>
 <head>
@@ -89,7 +89,7 @@ def index():
   <h2>Online now</h2>
   <ul>
   {% for uid, p in online %}
-      <li>{{p["name"]}} <span class="pill">active {{p["ago"]}}</span></li>
+      <li>{{ p["name"] }} <span class="pill">active {{ p["ago"] }}</span></li>
   {% else %}
       <li>Nobody online.</li>
   {% endfor %}
@@ -98,14 +98,14 @@ def index():
   <h2>Recent activity</h2>
   <ul>
   {% for e in events %}
-      <li><strong>{{e["name"]}</strong> answered a card{% if e["deck"] %} in <em>{{e["deck"]}</em>{% endif %}{% if e["ease"] is not none %} (ease={{e["ease"]}}){% endif %} <span class="muted">{{e["ago"]}}</span></li>
+      <li><strong>{{ e["name"] }}</strong> answered a card{% if e["deck"] %} in <em>{{ e["deck"] }}</em>{% endif %}{% if e["ease"] is not none %} (ease={{ e["ease"] }}){% endif %} <span class="muted">{{ e["ago"] }}</span></li>
   {% else %}
       <li>No activity yet.</li>
   {% endfor %}
   </ul>
 </body>
 </html>
-"""
+'''
     online_pairs = []
     for uid, p in list(people.items()):
         dt = t - p["last"]

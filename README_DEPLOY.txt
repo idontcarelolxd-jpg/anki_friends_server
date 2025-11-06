@@ -1,10 +1,8 @@
 
-Cloud deploy (Render/Railway/Fly/Heroku-like)
----------------------------------------------
-1) Put these files in a new GitHub repo's root (app.py, requirements.txt, Procfile).
-2) On your PaaS, create a new web service from that repo.
-   - Build command: (none; standard Python build)
-   - Start command: use the Procfile or: gunicorn app:app --preload --bind 0.0.0.0:$PORT
-3) After deploy, you'll get a URL like https://your-app.onrender.com
-4) In Anki: Tools -> Add-ons -> Friends Activity -> Config
-   Set "server" to that URL (no trailing slash), eg "https://your-app.onrender.com".
+How to deploy (Render/Railway/Heroku-like):
+1) Create a new empty repo on GitHub and upload these four files to the root: app.py, requirements.txt, Procfile, README_DEPLOY.txt
+2) On your PaaS, create a new Web Service from that repo.
+   Build command: pip install -r requirements.txt
+   Start command: gunicorn app:app --preload --bind 0.0.0.0:$PORT
+3) When Live, visit your URL (e.g., https://your-app.onrender.com). You should see the Friends Activity page.
+4) JSON feed at /feed.json
